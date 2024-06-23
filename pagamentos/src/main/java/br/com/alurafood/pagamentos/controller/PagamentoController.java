@@ -26,7 +26,7 @@ public class PagamentoController {
         return service.obterTodos(paginacao);
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<PagamentoDto> detalhar(@PathVariable @NotNull Long id) {
         PagamentoDto dto = service.obterPorId(id);
 
@@ -41,14 +41,14 @@ public class PagamentoController {
         return ResponseEntity.created(endereco).body(pagamentoDto);
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public ResponseEntity<PagamentoDto> atualizar(@PathVariable @NotNull Long id, @RequestBody @Valid PagamentoDto dto) {
         PagamentoDto pagamentoDto = service.atualizarPagamento(id, dto);
 
         return ResponseEntity.ok(pagamentoDto);
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public ResponseEntity<PagamentoDto> remover(@PathVariable @NotNull Long id) {
         service.excluirPagamento(id);
 

@@ -23,7 +23,7 @@ public class PagamentoService {
     public Page<PagamentoDto> obterTodos(Pageable paginacao) {
         return repository
                 .findAll(paginacao)
-                .map(pagamento -> modelMapper.map(paginacao, PagamentoDto.class));
+                .map(pagamento -> modelMapper.map(pagamento, PagamentoDto.class));
     }
 
     public PagamentoDto obterPorId(Long id) {
@@ -41,7 +41,7 @@ public class PagamentoService {
         return modelMapper.map(pagamento, PagamentoDto.class);
     }
 
-    public PagamentoDto atualizarPagamento(Long id, PagamentoDto dto) {
+    public PagamentoDto atualizarPagamento(Long id, PagamentoDto dto) { //TODO pegar status do BD
         Pagamento pagamento = modelMapper.map(dto, Pagamento.class);
         pagamento.setId(id);
         pagamento = repository.save(pagamento);
