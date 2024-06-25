@@ -6,6 +6,7 @@ import br.com.alurafood.pedidos.service.PedidoService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -56,5 +57,10 @@ public class PedidoController {
 
             return ResponseEntity.ok().build();
 
+        }
+
+        @GetMapping("/porta")
+        public String retornaPorta(@Value("${local.server.port}") String porta) {
+            return String.format("Requisicao respondida pela instancia executando na porta %s", porta);
         }
 }
